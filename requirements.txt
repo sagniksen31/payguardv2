@@ -35,3 +35,7 @@ optuna>=3.5.0
 # ── Notes ─────────────────────────────────────────────────────────────────────
 # pickle   : stdlib -- no install needed
 # joblib   : installed as scikit-learn transitive dep -- no separate install
+
+fastapi>=0.115.0
+uvicorn[standard]>=0.30.0
+pydantic>=2.8.0
