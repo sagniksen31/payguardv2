@@ -1,0 +1,37 @@
+# PayGuard v2 -- Predictive Intelligence Backend
+# Offline-only.  No cloud APIs.  No external data sources.
+
+# ── Core data science ─────────────────────────────────────────────────────────
+numpy>=1.26.0
+pandas>=2.1.0
+scikit-learn>=1.4.0          # CalibratedClassifierCV, metrics, StratifiedKFold
+
+# ── Frontend (unchanged) ──────────────────────────────────────────────────────
+streamlit>=1.35.0
+streamlit-autorefresh>=1.0.1   # Live Operations Mode — safe polling without st.rerun() loops
+
+# ── v2.3 ensemble model libraries ────────────────────────────────────────────
+
+# XGBoost: GPU via tree_method="hist", device="cuda"
+#   Auto-detects GPU at runtime; silently falls back to CPU if unavailable.
+#   v2.0.0+ required for the device= API (replaces deprecated tree_method="gpu_hist").
+xgboost>=2.0.0
+
+# LightGBM: GPU via device="gpu"
+#   Requires a LGBM build compiled with GPU support for GPU mode.
+#   Auto-detects and falls back to CPU silently.
+lightgbm>=4.1.0
+
+# CatBoost: GPU via task_type="GPU"
+#   GPU support ships in the standard catboost wheel; no separate build needed.
+#   Auto-detects and falls back to CPU silently.
+catboost>=1.2.0
+
+# ── Hyperparameter optimisation (reserved for future HPO pass) ────────────────
+# Not used in the default training path (use_optuna=False by default).
+# Required only if train_model(..., use_optuna=True) is called in a future upgrade.
+optuna>=3.5.0
+
+# ── Notes ─────────────────────────────────────────────────────────────────────
+# pickle   : stdlib -- no install needed
+# joblib   : installed as scikit-learn transitive dep -- no separate install
